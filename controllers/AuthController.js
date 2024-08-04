@@ -2,7 +2,7 @@
 
 import sha1 from 'sha1';
 import dbClient from '../utils/db.mjs';
-import redisClient from '../utils/redis.js';
+import redisClient from '../utils/redis.mjs';
 
 class AuthController {
     static async getConnect(req, res) {
