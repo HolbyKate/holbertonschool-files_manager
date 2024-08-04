@@ -8,6 +8,10 @@ import { v4 as uuidv4 } from 'uuid';
 class AuthController {
     static async getConnect(_req, res) {
         console.log('Received connect request');
+
+        if (!dbClient.isAlive()) {
+            return res.status(500).json({ error: 'Database connection not established' });
+        }
         const authHeader = _req.headers.authorization;
         if (!authHeader || !authHeader.startsWith('Basic ')) {
             console.log('No auth header or invalid auth header');

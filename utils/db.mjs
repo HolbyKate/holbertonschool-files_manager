@@ -12,8 +12,7 @@ class DBClient {
         this.client = new MongoClient(uri, { useUnifiedTopology: true });
         this.db = null;
 
-        this.client
-            .connect()
+        this.client.connect()
             .then(() => {
                 this.db = this.client.db(database);
                 console.log("Connected successfully to MongoDB");
