@@ -1,6 +1,6 @@
 /* eslint-disable */
 import express from 'express';
-import AppController from './controllers/AppController.js';
+import AppController from '../controllers/AppController.js';
 
 class AppController {
     static async getStatus(req, res) {
