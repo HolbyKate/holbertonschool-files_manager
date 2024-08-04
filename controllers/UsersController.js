@@ -1,13 +1,12 @@
 /* eslint-disable */
 
 import sha1 from 'sha1';
-import { ObjectId } from 'mongodb';
 import dbClient from '../utils/db.mjs';
 
 
 class UsersController {
-    static async postNew(_req, res) {
-        const { email, password } = _req.body;
+    static async postNew(req, res) {
+        const { email, password } = req.body;
 
         if (!email) {
             return res.status(400).json({ error: 'Missing email' });
@@ -25,13 +24,13 @@ class UsersController {
         }
 
         const hashedPassword = sha1(password);
-        const newUser = await usersCollection.insertOne({
+        const result = await usersCollection.insertOne({
             email,
             password: hashedPassword,
         });
 
         return res.status(201).json({
-            id: newUser.insertedId.toString(),
+            id: result.insertedId.toString(),
             email,
         });
     }
