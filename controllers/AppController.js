@@ -1,6 +1,6 @@
 /* eslint-disable */
-import express from 'express';
-import AppController from '../controllers/AppController.js';
+import redisClient from '../utils/redis';
+import dbClient from '../utils/db';
 
 class AppController {
     static async getStatus(req, res) {
