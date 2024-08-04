@@ -6,9 +6,11 @@ import redisClient from '../utils/redis.mjs';
 import { v4 as uuidv4 } from 'uuid';
 
 class AuthController {
-    static async getConnect(req, res) {
-        const authHeader = req.headers.authorization;
+    static async getConnect(_req, res) {
+        console.log('Received connect request');
+        const authHeader = _req.headers.authorization;
         if (!authHeader || !authHeader.startsWith('Basic ')) {
+            console.log('No auth header or invalid auth header');
             return res.status(401).json({ error: 'Unauthorized' });
         }
 
